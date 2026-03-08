@@ -189,7 +189,7 @@ textarea:focus, .stTextArea textarea:focus {
 
 .stButton > button {
     background: linear-gradient(135deg, var(--teal), var(--teal-dim)) !important;
-    color: var(--navy) !important;
+    color: #ffffff !important;
     font-weight: 700 !important;
     border: none !important;
     border-radius: 10px !important;
@@ -197,7 +197,8 @@ textarea:focus, .stTextArea textarea:focus {
     font-size: 0.88rem !important;
     transition: opacity 0.2s, transform 0.15s !important;
 }
-.stButton > button:hover { opacity: 0.88 !important; transform: translateY(-1px) !important; }
+.stButton > button:hover { opacity: 0.88 !important; transform: translateY(-1px) !important;
+box-shadow: 0 3px 10px rgba(0,201,177,0.35); }
 
 div[data-testid="stSelectbox"] > div > div {
     background: var(--navy-mid) !important;
@@ -380,8 +381,8 @@ with tab_analyser:
         )
 
         btn1, btn2   = st.columns(2)
-        analyse_btn  = btn1.button("⚡ Analyse",     use_container_width=True)
-        sample_btn   = btn2.button("📂 Load Sample", use_container_width=True)
+        analyse_btn  = btn1.button(" Analyse",     use_container_width=True)
+        sample_btn   = btn2.button(" Load Sample", use_container_width=True)
 
         if sample_btn:
             sample_df = load_sample_data()
