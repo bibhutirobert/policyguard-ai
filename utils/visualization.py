@@ -264,9 +264,28 @@ def chart_avg_risk_by_category(df: pd.DataFrame) -> go.Figure:
     -------
     go.Figure
     """
+
+    # Convert risk labels to numeric values if needed
+    risk_map = {
+        "Low": 25,
+        "Medium": 50,
+        "High": 75,
+        "Critical": 100
+    }
+
+    # Create numeric column safely
+    df = df.copy()
+    df["risk_numeric"] = df["risk_score"].map(risk_map)
+
+    # If risk_score is already numeric, keep it
+    df["risk_numeric"] = df["risk_numeric"].fillna(df["risk_score"])
+
+    # Ensure numeric type
+    df["risk_numeric"] = pd.to_numeric(df["risk_numeric"], errors="coerce")
+
     avg = (
-        df[df["risk_score"] > 0]
-        .groupby("complaint_category")["risk_score"]
+        df[df["risk_numeric"] > 0]
+        .groupby("complaint_category")["risk_numeric"]
         .mean()
         .round(1)
         .sort_values()
@@ -284,15 +303,18 @@ def chart_avg_risk_by_category(df: pd.DataFrame) -> go.Figure:
         text="avg_risk",
         range_color=[0, 100],
     )
+
     fig.update_traces(
         textposition="outside",
         textfont=dict(color="#E8EDF5", size=11),
         marker_line_width=0,
         hovertemplate="<b>%{y}</b><br>Avg risk: %{x}<extra></extra>",
     )
+
     fig.update_coloraxes(showscale=False)
     fig.update_xaxes(**dict(_AXIS_DEFAULTS, range=[0, 115]))
     fig.update_yaxes(**dict(_AXIS_DEFAULTS, tickfont=dict(color="#E8EDF5")))
+
     return _apply_base(fig, "Avg Risk Score by Category")
 
 
