@@ -320,40 +320,43 @@ def chart_avg_risk_by_category(df: pd.DataFrame) -> go.Figure:
 
 def chart_risk_over_time(df: pd.DataFrame) -> go.Figure:
     """
-    Line chart of average risk score over time (by analysis date).
-
-    Parameters
-    ----------
-    df : pd.DataFrame  — must contain ``analyzed_at`` and ``risk_score``.
-
-    Returns
-    -------
-    go.Figure
+    Line chart showing risk trend over time.
     """
-    valid = df[df["risk_score"] > 0].copy()
-    valid["date"] = pd.to_datetime(valid["analyzed_at"], errors="coerce").dt.date
+
+    risk_map = {
+        "Low": 25,
+        "Medium": 50,
+        "High": 75,
+        "Critical": 100
+    }
+
+    df = df.copy()
+
+    # Convert labels → numeric
+    df["risk_numeric"] = df["risk_score"].map(risk_map)
+
+    # If already numeric keep original
+    df["risk_numeric"] = df["risk_numeric"].fillna(df["risk_score"])
+
+    # Force numeric dtype
+    df["risk_numeric"] = pd.to_numeric(df["risk_numeric"], errors="coerce")
+
     trend = (
-        valid.groupby("date")["risk_score"]
+        df.groupby("date")["risk_numeric"]
         .mean()
         .round(1)
         .reset_index(name="avg_risk")
     )
 
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(
-        x=trend["date"],
-        y=trend["avg_risk"],
-        mode="lines+markers",
-        line=dict(color="#00C9B1", width=2.5),
-        marker=dict(color="#00C9B1", size=7),
-        fill="tozeroy",
-        fillcolor="rgba(0,201,177,0.08)",
-        hovertemplate="<b>%{x}</b><br>Avg risk: %{y}<extra></extra>",
-        name="Avg Risk",
-    ))
-    fig.update_xaxes(**dict(_AXIS_DEFAULTS, tickfont=dict(color="#8B9BB4")))
-    fig.update_yaxes(**dict(_GRID_AXIS, range=[0, 105]))
-    return _apply_base(fig, "Risk Score Trend Over Time")
+    fig = px.line(
+        trend,
+        x="date",
+        y="avg_risk",
+        markers=True,
+        title="Risk Trend Over Time"
+    )
+
+    return _apply_base(fig, "Risk Trend Over Time")
 
 
 # ---------------------------------------------------------------------------
