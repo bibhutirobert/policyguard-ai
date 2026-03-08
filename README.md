@@ -6,6 +6,9 @@
 > operations and compliance teams.
 
 ---
+## System Architecture
+
+![Architecture Diagram](architecture_diagram.png)
 
 ## What It Does
 
@@ -214,7 +217,7 @@ echo "complaints_log.csv" >> .gitignore
 
 ---
 
-## 📊 Risk Score Reference
+## Risk Score Reference
 
 | Score | Level | Action |
 |---|---|---|
