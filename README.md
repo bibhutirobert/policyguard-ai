@@ -1,4 +1,4 @@
-# 🛡️ PolicyGuard AI — v2.0
+# PolicyGuard AI — v2.0
 ### Insurance Complaint Intelligence System
 
 > A production-grade AI analytics platform that transforms raw customer
@@ -7,7 +7,7 @@
 
 ---
 
-## 📸 What It Does
+## What It Does
 
 Paste any customer complaint and PolicyGuard AI returns a full intelligence report in seconds:
 
@@ -25,9 +25,9 @@ Paste any customer complaint and PolicyGuard AI returns a full intelligence repo
 
 ---
 
-## ✨ Features
+## Features
 
-### 🔍 Complaint Analyser
+### Complaint Analyser
 - Single complaint analysis with full structured output
 - Load random samples from the built-in dataset
 - Colour-coded sentiment, urgency, and escalation badges
@@ -36,7 +36,7 @@ Paste any customer complaint and PolicyGuard AI returns a full intelligence repo
 - Recommended response strategy block
 - Raw JSON expander for developer inspection
 
-### 📊 Analytics Dashboard (7 charts)
+### Analytics Dashboard (7 charts)
 - Complaint category distribution — horizontal bar
 - Sentiment distribution — donut chart
 - Urgency level breakdown — vertical bar
@@ -45,26 +45,26 @@ Paste any customer complaint and PolicyGuard AI returns a full intelligence repo
 - Average risk score by category — heat-scaled bar
 - Risk score trend over time — area line chart
 
-### 📋 Complaint Log
+### Complaint Log
 - Full filter bar: category, urgency, sentiment, escalation, risk score range
 - Sortable data table (highest risk first)
 - Separate filtered and full CSV exports
 - Top 5 Escalation Risk spotlight cards
 
-### 🚀 Batch Processing
+### Batch Processing
 - Upload any CSV with a `complaint_text` column
 - Real-time progress bar per complaint
 - Automatic policy type extraction from CSV if column present
 - Results appended to session log
 
-### 💾 Data Persistence
+### Data Persistence
 - Save log to `complaints_log.csv` (appends across sessions)
 - Reload previous session data from sidebar
 - Schema migration — handles column additions gracefully
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 policyguard-ai/
@@ -94,7 +94,7 @@ policyguard-ai/
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology | Version |
 |---|---|---|
@@ -107,7 +107,7 @@ policyguard-ai/
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### 1. Clone or download the project
 
@@ -160,7 +160,7 @@ $env:OPENAI_API_KEY="sk-your-key-here"
 
 ---
 
-## ▶️ Running the App
+## Running the App
 
 ```bash
 streamlit run app.py
@@ -170,20 +170,20 @@ Opens automatically at **http://localhost:8501**
 
 ---
 
-## 🧪 5-Minute Demo
+## 5-Minute Demo
 
 1. `streamlit run app.py`
 2. Enter API key in sidebar (or use `.env`)
-3. Click **📂 Load Sample** → a real complaint appears
-4. Click **⚡ Analyse** → full AI report renders on the right
+3. Click ** Load Sample** → a real complaint appears
+4. Click ** Analyse** → full AI report renders on the right
 5. Repeat 5–6 times to populate the dashboard
-6. Switch to **📈 Analytics Dashboard** — all 7 charts update live
-7. Switch to **📋 Complaint Log** — filter, export, view Top 5 risks
-8. Click **💾 Save Log to CSV** in sidebar to persist results
+6. Switch to ** Analytics Dashboard** — all 7 charts update live
+7. Switch to ** Complaint Log** — filter, export, view Top 5 risks
+8. Click ** Save Log to CSV** in sidebar to persist results
 
 ---
 
-## 📁 Sample Dataset
+## Sample Dataset
 
 `sample_complaints.csv` — 25 real-world style complaints across 5 policy types:
 
@@ -199,7 +199,7 @@ Opens automatically at **http://localhost:8501**
 
 ---
 
-## 🔐 Security Practices
+## Security Practices
 
 - API key is **never hardcoded** anywhere in the codebase
 - Key is read exclusively from environment variable `OPENAI_API_KEY`
@@ -225,7 +225,7 @@ echo "complaints_log.csv" >> .gitignore
 
 ---
 
-## 🔧 Customisation
+## Customisation
 
 ### Switch to GPT-4 for higher accuracy
 
@@ -246,7 +246,7 @@ All colours are centralised in `utils/config.py` under `SENTIMENT_COLOURS`, `URG
 
 ---
 
-## 🚀 Roadmap
+## Roadmap
 
 - [ ] PostgreSQL persistence — cross-session complaint history
 - [ ] Role-based access — analyst vs manager views
@@ -261,7 +261,7 @@ All colours are centralised in `utils/config.py` under `SENTIMENT_COLOURS`, `URG
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repo
 2. Create a feature branch: `git checkout -b feature/my-improvement`
@@ -270,7 +270,7 @@ All colours are centralised in `utils/config.py` under `SENTIMENT_COLOURS`, `URG
 
 ---
 
-## 📄 Licence
+## Licence
 
 MIT — free to use, modify, and distribute.
 
