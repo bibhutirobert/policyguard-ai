@@ -188,17 +188,27 @@ textarea:focus, .stTextArea textarea:focus {
 }
 
 .stButton > button {
-    background: linear-gradient(135deg, var(--teal), var(--teal-dim)) !important;
-    color: #ffffff !important;
+    background: linear-gradient(135deg, var(--navy-light), var(--navy-mid)) !important;
+    color: var(--teal) !important;
     font-weight: 700 !important;
-    border: none !important;
+    border: 1px solid rgba(0,201,177,0.35) !important;
     border-radius: 10px !important;
     padding: 0.52rem 1.6rem !important;
-    font-size: 0.88rem !important;
-    transition: opacity 0.2s, transform 0.15s !important;
+    font-size: 0.92rem !important;
+    transition: all 0.2s ease !important;
 }
-.stButton > button:hover { opacity: 0.88 !important; transform: translateY(-1px) !important;
-box-shadow: 0 3px 10px rgba(0,201,177,0.35); }
+
+/* ensure nested span text inherits the color */
+.stButton > button * {
+    color: var(--teal) !important;
+}
+
+/* hover effect */
+.stButton > button:hover {
+    background: linear-gradient(135deg, var(--teal), var(--teal-dim)) !important;
+    color: var(--navy) !important;
+    transform: translateY(-1px) !important;
+ }
 
 div[data-testid="stSelectbox"] > div > div {
     background: var(--navy-mid) !important;
