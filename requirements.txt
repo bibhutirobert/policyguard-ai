@@ -1,0 +1,14 @@
+# PolicyGuard AI — Python dependencies
+# Install with: pip install -r requirements.txt
+
+# ── Core application ──────────────────────────────────────────────────────
+streamlit>=1.32.0           # Web application framework
+openai>=1.12.0              # OpenAI Python SDK (v1+ client)
+pandas>=2.0.0               # DataFrame operations
+plotly>=5.18.0              # Interactive charts
+
+# ── Environment & configuration ───────────────────────────────────────────
+python-dotenv>=1.0.0        # Load OPENAI_API_KEY from .env file
+
+# ── Standard library (no install needed, listed for documentation) ────────
+# json, os, re, uuid, logging, pathlib, datetime — all built-in
